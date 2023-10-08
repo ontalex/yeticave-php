@@ -8,30 +8,14 @@ require_once("libs/db_queries.php");
  *
  */
 
-$lots = $con->query("SELECT
-	lots.id,
-    lots.title,
-    lots.img_url,
-    lots.price,
-    lots.date_end,
-    lots.date_create,
-    categories.title as category
-FROM
-	lots JOIN categories on lots.category_id = categories.id
-WHERE
-	lots.date_end > NOW()
-ORDER BY lots.date_create
-LIMIT 6;")->fetchAll();
-
 $is_auth = rand(0, 1);
 
 $title = "Главная";
 
 $user_name = 'Алексей Б.'; // укажите здесь ваше имя
 
-$templateMain = include_template("main_template.php", [
-    "categories" => $cots,
-    "lot_list" => $lots,
+$templateMain = include_template("add_lot_template.php", [
+    "categories" => $cots
 ]);
 
 $page = include_template("layout.php", [
