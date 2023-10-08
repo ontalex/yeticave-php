@@ -31,11 +31,6 @@ WHERE
 $lotStatus = $lot->execute(["id_lot" => $_GET["id"]]);
 $lotData = $lot->fetch();
 
-// print_r("lot status = " . $lotStatus . "<br/>");
-// print_r("rows count = " . $lot->rowCount() . "<br/>");
-// print_r("id = " . $_GET["id"] . "<br/>");
-// print_r($lotData);
-
 if ($lot->rowCount() > 0) {
 
   $templateLot = include_template("lot_template.php", [
